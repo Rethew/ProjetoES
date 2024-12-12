@@ -1,5 +1,6 @@
 package pt.estgp.es.projetoes.spring.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -13,6 +14,7 @@ public class Disciplina {
 
     String nome;
 
+    @JsonBackReference
     @ManyToMany
     @JoinTable(
             name = "disciplina_aluno",

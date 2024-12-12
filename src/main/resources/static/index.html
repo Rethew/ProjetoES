@@ -1,11 +1,131 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
 <body>
 
-<div ng-app="">
+<script>
+
+    var app = angular.module("es",[]);
+    app.controller("esCtrl",function($scope,$http){
+
+        $scope.aluno={};
+        $scope.name = "Nome Inicial";
+
+
+        $scope.testaApi = function(){
+            $http({
+                method: 'GET',
+                url: "/api/v1/alunos/1",
+                //data: {}
+            }).then(
+                function(data){
+                    $scope.aluno = data.data;
+                },
+                function(error){
+                    alert(error);
+                }
+            ).catch(function (error){
+                alert(error)
+            });
+        }
+
+
+
+
+        $scope.testaEchoAluno = function(){
+            $http({
+                method: 'POST',
+                url: "/api/v1/hello/echoAluno",
+                data: $scope.aluno
+            }).then(
+                function(data){
+                    $scope.echoAluno = data.data;
+                },
+                function(error){
+                    alert(error.data.message + " - " + JSON.stringify(error));
+                }
+            ).catch(function (error){
+                alert(error)
+            });
+        }
+
+    });
+
+
+
+</script>
+<style>
+    .dirty{
+        background-color: orange;
+        border: 2px dashed black;
+    }
+</style>
+
+<div ng-app="es" ng-controller="esCtrl">
     <p>Nome : <input type="text" ng-model="name"></p>
     <h1>Olá {{name}}</h1>
+    <button ng-click="testaApi()">TESTAR</button>
+    <button ng-click="testaEchoAluno()">TESTAR Echo Aluno</button>
+
+    <pre>
+        {{aluno | json}}
+    </pre>
+
+    <div ng-class="{ 'dirty' : aluno.dirty }">
+        Aluno.nome = <input type="text" ng-model="aluno.nome" ng-change="aluno.dirty=true"><br>
+        Aluno.id = {{aluno.id}}<br>
+
+        <h2>Disciplinas do Dito Cujo {{aluno.nome}}
+            <span class="glyphicon glyphicon-envelope"></span>
+        </h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="d in aluno.disciplinas">
+                <td><input ng-model="d.id"></td>
+                <td><input ng-model="d.nome"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <h1>ECHO ALUNO</h1>
+    <div ng-if="echoAluno">
+        Aluno.nome = {{echoAluno.nome}}<br>
+        Aluno.id = {{echoAluno.id}}<br>
+
+        <h2>Disciplinas do Dito Cujo {{echoAluno.nome}}</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="d in echoAluno.disciplinas">
+                <td><input ng-model="d.id"></td>
+                <td><input ng-model="d.nome"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
 </div>
 
 </body>
