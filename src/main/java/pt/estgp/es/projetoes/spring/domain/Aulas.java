@@ -13,9 +13,6 @@ public class Aulas {
     @ManyToOne
     private Disciplina disciplina;
 
-    @OneToMany
-    private Set<Presencas> presencas;
-
     private String data;
     private String hora;
     private String duracao;

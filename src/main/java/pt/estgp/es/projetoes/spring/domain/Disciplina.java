@@ -20,9 +20,6 @@ public class Disciplina {
             inverseJoinColumns = @JoinColumn(name = "id_aluno", referencedColumnName = "id"))
     private Set<Aluno> alunos;
 
-    @OneToMany
-    private Set<Aulas> aulas;
-
     @OneToOne
     private Docente docente;
 
@@ -48,14 +45,6 @@ public class Disciplina {
 
     public void setDocente(Docente docente) {
         this.docente = docente;
-    }
-
-    public Set<Aulas> getAulas() {
-        return aulas;
-    }
-
-    public void setAulas(Set<Aulas> aulas) {
-        this.aulas = aulas;
     }
 
     public Set<Aluno> getAlunos() {

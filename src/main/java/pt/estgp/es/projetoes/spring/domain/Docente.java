@@ -13,17 +13,6 @@ public class Docente {
 
     private  String nome;
 
-    @OneToOne
-    private Disciplina disciplina;
-
-    public Disciplina getDisciplina() {
-        return disciplina;
-    }
-
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
-    }
-
     public Integer getId() {
         return id;
     }

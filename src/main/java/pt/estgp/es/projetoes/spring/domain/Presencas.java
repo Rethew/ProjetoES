@@ -1,20 +1,18 @@
 package pt.estgp.es.projetoes.spring.domain;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
+@Entity
 public class Presencas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
-    private int id_aluno;
+    private Aluno aluno;
 
     @ManyToOne
-    private int id_aula;
+    private Aulas aula;
 
     private String estado;
     private String data;
@@ -27,20 +25,20 @@ public class Presencas {
         this.id = id;
     }
 
-    public int getId_aluno() {
-        return id_aluno;
+    public Aluno getId_aluno() {
+        return aluno;
     }
 
-    public void setId_aluno(int id_aluno) {
-        this.id_aluno = id_aluno;
+    public void setId_aluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 
-    public int getId_aula() {
-        return id_aula;
+    public Aulas getId_aula() {
+        return aula;
     }
 
-    public void setId_aula(int id_aula) {
-        this.id_aula = id_aula;
+    public void setId_aula(Aulas aula) {
+        this.aula = aula;
     }
 
     public String getEstado() {
