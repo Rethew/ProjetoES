@@ -9,7 +9,8 @@ import java.util.Set;
 public class Aluno {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aluno_seq")
+    @SequenceGenerator(name = "aluno_seq", sequenceName = "aluno_sequence", allocationSize = 1, initialValue = 0)
     private Integer id;
 
     private String nome;

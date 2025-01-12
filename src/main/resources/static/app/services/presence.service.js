@@ -4,7 +4,7 @@
     angular.module('presenceApp')
         .factory('presenceService', ['$http', '$q', function($http, $q) {
 
-            var baseUrl = '/api/presences';
+            var baseUrl = '/api/presencas';
 
             return {
                 getAll: function() {

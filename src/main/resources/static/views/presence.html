@@ -60,9 +60,26 @@
         </thead>
         <tbody>
         <tr ng-repeat="presence in pc.presences">
-            <td>{{ presence.name }}</td>
-            <td>{{ presence.date | date:'short' }}</td>
-            <td>{{ presence.status }}</td>
+            <!-- Display the Aluno's Name -->
+            <td>{{ presence.id_aluno.nome }}</td>
+
+            <!-- Display the Aula's Disciplina Name -->
+            <td>{{ presence.id_aula.disciplina.nome }}</td>
+
+            <!-- Display the Aula's Docente Name -->
+            <td>{{ presence.id_aula.disciplina.docente.nome }}</td>
+
+            <!-- Display the Aula's Date -->
+            <td>{{ presence.id_aula.data }}</td>
+
+            <!-- Display the Aula's Time -->
+            <td>{{ presence.id_aula.hora }}</td>
+
+            <!-- Display the Aula's Duration -->
+            <td>{{ presence.id_aula.duracao }} minutes</td>
+
+            <!-- Display the Aula's State -->
+            <td>{{ presence.id_aula.estado }}</td>
         </tr>
         </tbody>
     </table>

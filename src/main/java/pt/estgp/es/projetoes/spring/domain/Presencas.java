@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 @Entity
 public class Presencas {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "presencas_seq")
+    @SequenceGenerator(name = "presencas_seq", sequenceName = "presencas_sequence", allocationSize = 1, initialValue = 0)
     private int id;
 
     @ManyToOne

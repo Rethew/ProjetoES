@@ -7,7 +7,8 @@ import java.util.Set;
 @Entity
 public class Aulas {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aulas_seq")
+    @SequenceGenerator(name = "aulas_seq", sequenceName = "aulas_sequence", allocationSize = 1, initialValue = 0)
     private int id;
 
     @ManyToOne

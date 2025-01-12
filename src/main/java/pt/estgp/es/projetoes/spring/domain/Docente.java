@@ -8,7 +8,8 @@ import java.util.Set;
 public class Docente {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "docente_seq")
+    @SequenceGenerator(name = "docente_seq", sequenceName = "docente_sequence", allocationSize = 1, initialValue = 0)
     private Integer id;
 
     private  String nome;
