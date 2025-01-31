@@ -21,9 +21,6 @@
         <tr ng-repeat="disciplina in uc.disciplinas">
             <td>{{ disciplina.nome }}</td>
             <td>{{ disciplina.docente.nome }}</td>
-            <td>
-                <button class="btn btn-danger" ng-click="uc.deleteDisciplina(disciplina.id)">Delete</button>
-            </td>
         </tr>
         </tbody>
     </table>
