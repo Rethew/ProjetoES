@@ -54,8 +54,10 @@
         <thead>
         <tr>
             <th>Name</th>
-            <th>Date/Time</th>
-            <th>Status</th>
+            <th>Disciplina</th>
+            <th>Docente</th>
+            <th>Data</th>
+            <th>Estado</th>
         </tr>
         </thead>
         <tbody>
@@ -71,12 +73,6 @@
 
             <!-- Display the Aula's Date -->
             <td>{{ presence.id_aula.data }}</td>
-
-            <!-- Display the Aula's Time -->
-            <td>{{ presence.id_aula.hora }}</td>
-
-            <!-- Display the Aula's Duration -->
-            <td>{{ presence.id_aula.duracao }} minutes</td>
 
             <!-- Display the Aula's State -->
             <td>{{ presence.id_aula.estado }}</td>

@@ -4,13 +4,13 @@
     angular.module('presenceApp')
         .config(['$routeProvider', function($routeProvider) {
             $routeProvider
-                .when('/presence', {
-                    templateUrl: 'views/presence.html',
-                    controller: 'PresenceController',
-                    controllerAs: 'pc'
+                .when('/uc', {
+                    templateUrl: 'views/uc.html',
+                    controller: 'UnidadeCurricularController',
+                    controllerAs: 'uc'
                 })
                 .otherwise({
-                    redirectTo: '/presence'
+                    redirectTo: '/uc'
                 });
         }]);
 })();

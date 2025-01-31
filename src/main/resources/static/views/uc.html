@@ -1,0 +1,34 @@
+<div class="container" ng-app="presenceApp" ng-controller="UnidadeCurricularController as uc">
+    <h1>Presence APP</h1>
+
+    <div class="alert alert-danger" ng-show="uc.error">{{ uc.error }}</div>
+    <div class="alert alert-success" ng-show="uc.success">{{ uc.success }}</div>
+
+    <h2>Registered Unidade Curriculares</h2>
+    <div ng-if="uc.loading">
+        <p>Loading disciplines...</p>
+    </div>
+
+    <table class="table table-striped" ng-if="!uc.loading && uc.disciplinas.length > 0">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Docente</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="disciplina in uc.disciplinas">
+            <td>{{ disciplina.nome }}</td>
+            <td>{{ disciplina.docente.nome }}</td>
+            <td>
+                <button class="btn btn-danger" ng-click="uc.deleteDisciplina(disciplina.id)">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div ng-if="!uc.loading && uc.disciplinas.length === 0">
+        <p>No disciplines registered yet.</p>
+    </div>
+</div>
