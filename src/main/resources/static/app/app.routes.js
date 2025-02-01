@@ -9,8 +9,21 @@
                     controller: 'UnidadeCurricularController',
                     controllerAs: 'uc'
                 })
+
+                .when('/aulas', {
+                    templateUrl: 'views/aulas.html',
+                    controller: 'AulasController',
+                    controllerAs: 'aulas',
+                })
+
+                .when('/presence', {
+                    templateUrl: 'views/presence.html',
+                    controller: 'PresenceController',
+                    controllerAs: 'pc'
+                })
+
                 .otherwise({
-                    redirectTo: '/uc'
+                    redirectTo: '/presence'
                 });
         }]);
 })();

@@ -1,0 +1,52 @@
+<div class="container" ng-controller="AulasController as aulas">
+    <h1>Aulas</h1>
+
+    <div class="alert alert-danger" ng-show="aulas.error">{{ aulas.error }}</div>
+    <div class="alert alert-success" ng-show="aulas.success">{{ aulas.success }}</div>
+
+    <h2>Create New Aula</h2>
+    <form name="aulaForm" ng-submit="aulas.createAula()" novalidate>
+        <div class="form-group">
+            <label for="data">Data</label>
+            <input type="date" id="data" class="form-control" ng-model="aulas.newAula.data" required>
+        </div>
+        <div class="form-group">
+            <label for="hour">Hora</label>
+            <input type="time" id="hour" class="form-control" ng-model="aulas.newAula.hora" required>
+        </div>
+        <div class="form-group">
+            <label for="duracao">Duration</label>
+            <input type="text" id="duracao" class="form-control" ng-model="aulas.newAula.duracao" required>
+        </div>
+        <div class="form-group">
+            <label for="estado">Estado</label>
+            <input type="text" id="estado" class="form-control" ng-model="aulas.newAula.estado" required>
+        </div>
+        <button type="submit" class="btn btn-primary" ng-disabled="aulaForm.$invalid">Create Aula</button>
+    </form>
+
+    <hr>
+
+    <h2>Registered Aulas</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Duração</th>
+            <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="aula in aulas.aulas">
+            <td>{{ aula.data }}</td>
+            <td>{{ aula.hora }}</td>
+            <td>{{ aula.duracao }}</td>
+            <td>{{ aula.estado }}</td>
+            <td>
+                <button class="btn btn-danger" ng-click="aulas.deleteAula(aula.id)">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

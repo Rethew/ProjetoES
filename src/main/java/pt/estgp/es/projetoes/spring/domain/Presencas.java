@@ -14,7 +14,6 @@ public class Presencas {
 
     @ManyToOne
     private Aulas aula;
-
     private String estado;
     private String data;
 
